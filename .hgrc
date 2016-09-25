@@ -1,0 +1,17 @@
+[ui]
+username = Kuat Yessenov <kyessenov@gmail.com>
+
+[extensions]
+pager =
+progress =
+color =
+hgext.convert =
+hgk=
+hgext.extdiff =
+
+[extdiff]
+cmd.meld =
+
+[hgk]
+path=~/Documents/dotfiles/scripts/hgk.tcl
+

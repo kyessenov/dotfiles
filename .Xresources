@@ -1,0 +1,51 @@
+! xterm
+
+xterm*faceName:   Ubuntu Mono for Powerline
+xterm*faceSize:   12
+xterm*termName:   xterm-256color
+xterm*font: fixed
+xterm*boldFont: fixed
+xterm*dynamicColors:      true
+xterm*utf8:               1
+xterm*eightBitInput:      true
+xterm*saveLines:          2048
+
+! gnome-settings-daemon additions
+
+Xft.dpi:	96
+Xft.antialias:	true
+Xft.autohint: true
+Xft.hinting:	true
+Xft.rgba:	rgb
+Xft.hintstyle:	hintslight
+
+! URxvt
+
+URxvt*foreground: Black
+!URxvt*depth: 32
+!URxvt*background: rgba:ffff/ffff/ffff/dddd
+URxvt*background: White
+URxvt*geometry: 80x30
+URxvt*scrollBar: false
+URxvt*loginShell: true
+URxvt*visualBell: false
+URxvt*urgentOnBell: true
+URxvt*iconFile: /usr/share/icons/Tango/scalable/apps/terminal.svg
+URxvt*externalBorder:     0
+URxvt*internalBorder:     0
+!URxvt.font:          xft:Ubuntu Mono derivative Powerline:regular:size=13:antialias=true:hinting=slight
+URxvt.font:           xft:Ubuntu Mono derivative Powerline:regular:size=13
+URxvt.boldFont:       xft:Ubuntu Mono derivative Powerline:semibold:size=13
+URxvt.italicFont:     xft:Ubuntu Mono derivative Powerline:italic:size=13
+URxvt.letterSpace: -1
+
+! URxvt Extensions
+
+URxvt.perl-ext-common: default,clipboard,font-size
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+URxvt.keysym.Mod4-equal:     perl:font-size:increase
+URxvt.keysym.Mod4-minus:   perl:font-size:decrease
