@@ -1,6 +1,8 @@
 runtime! debian.vim
 syntax on
 
+execute pathogen#infect()
+
 " Return to last position when opening a file
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal g'\"" | endif
@@ -53,6 +55,7 @@ autocmd BufRead,BufNewFile *.dfy setfiletype dafny
 autocmd BufRead,BufNewFile *.chalice setfiletype chalice
 autocmd BufRead,BufNewFile *.sbt setfiletype scala
 autocmd BufRead,BufNewFile *.scala setlocal foldmethod=indent
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufEnter *.tex set spell
 
 " Golang
