@@ -2,7 +2,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo Linking home files
-find $DIR -d 1 -name ".*" -not -name ".git*" |\
+find $DIR -maxdepth 1 -name ".*" -not -name ".git*" |\
   while read fname; do
     ln -s $fname ~
   done

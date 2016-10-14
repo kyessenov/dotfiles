@@ -186,12 +186,12 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-Up">
+    <keybind key="C-Up">
       <action name="ShowMenu">
         <menu>client-list-combined-menu</menu>
       </action>
     </keybind>
-    <keybind key="S-Down">
+    <keybind key="C-Down">
       <action name="ShowMenu">
         <menu>client-list-menu</menu>
       </action>
@@ -334,7 +334,7 @@
     </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
-        <execute>urxvtc -e /usr/bin/fish</execute>
+        <execute>urxvtc -e fish</execute>
       </action>
     </keybind>
     <keybind key="C-space">
