@@ -9,7 +9,7 @@ end
 set -gx HOMEBREW_NO_ANALYTICS 1
 
 # Go stuff
-if test -d $HOME/homebrew/bin
+if test -d $HOME/homebrew/go/bin
   set -gx PATH $HOME/homebrew/go/bin $PATH
 end
 set -gx GOPATH $HOME/homebrew/go
