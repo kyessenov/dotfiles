@@ -58,7 +58,6 @@ autocmd BufRead,BufNewFile *.scala setlocal foldmethod=indent
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufEnter *.tex set spell
 
-
 " Disable backups
 set nobackup
 set noswapfile
@@ -74,6 +73,11 @@ set t_Co=256
 set background=light
 colorscheme lucius
 LuciusWhite
+
+" Terminal support for fonts
+set t_ZH=[3m
+set t_ZR=[23m
+hi Comment cterm=italic
 
 " GUI
 if has('gui_running')
@@ -182,18 +186,16 @@ function! s:build_go_files()
   endif
 endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go hi goSameId term=bold cterm=bold ctermbg=231
-let g:go_auto_type_info = 1
 " Causes issues with showing artifacts on screen
+" let g:go_auto_type_info = 1
 " let g:go_auto_sameids = 1
 let g:go_dispatch_enabled = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_def_mode = 'godef'
