@@ -58,15 +58,6 @@ autocmd BufRead,BufNewFile *.scala setlocal foldmethod=indent
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufEnter *.tex set spell
 
-" Golang
-autocmd BufRead,BufNewFile *.go setlocal noexpandtab
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
 
 " Disable backups
 set nobackup
@@ -113,8 +104,9 @@ nnoremap <Leader>6 :b 6<Cr>
 nnoremap <Leader>7 :b 7<Cr>
 nnoremap <Leader>8 :b 8<Cr>
 nnoremap <Leader>9 :b 9<Cr>
-
-nnoremap <Leader>s :wa<Cr>
+nnoremap <Leader>a :cclose<Cr>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
 
 imap <C-d> <Del>
 nnoremap j gj
@@ -124,6 +116,11 @@ nnoremap k gk
 "inoremap <Down> <C-o>gj
 "inoremap <Up> <C-o>gk
 
+" Neocomplete (insert mode mappings)
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-l>  neocomplete#complete_common_string()
 
 " Airline plugin
 let g:airline_powerline_fonts=1
@@ -135,25 +132,17 @@ let g:airline_theme='lucius'
 " LaTeX
 let g:tex_flavor="latex"
 let g:vimtex_latexmk_build_dir = '/tmp/latex'
-
-
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin' || os == 'Mac'
   let g:vimtex_view_general_viewer = $HOME.'/Applications/Skim.app/Contents/SharedSupport/displayline'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-
-
 autocmd FileType tex execute 'setlocal complete+=k'.$HOME.'/.vim/dictionaries/latex.txt'
 
 " Indent Python in the Google way.
-
 setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-
 let s:maxoff = 50 " maximum number of lines to look backwards.
-
 function GetGooglePythonIndent(lnum)
-
   " Indent inside parens.
   " Align with the open paren unless it is at the end of the line.
   " E.g.
@@ -177,8 +166,37 @@ function GetGooglePythonIndent(lnum)
 
   " Delegate the rest to the original function.
   return GetPythonIndent(a:lnum)
-
 endfunction
 
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
+
+" Golang
+autocmd BufRead,BufNewFile *.go setlocal noexpandtab
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go hi goSameId term=bold cterm=bold ctermbg=231
+let g:go_auto_type_info = 1
+" Causes issues with showing artifacts on screen
+" let g:go_auto_sameids = 1
+let g:go_dispatch_enabled = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_def_mode = 'godef'
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']

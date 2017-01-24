@@ -2,14 +2,15 @@ if test -f ~/.bash_aliases
   source ~/.bash_aliases
 end
 
-# Homebrew stuff
-if test -d $HOME/homebrew/bin
-  set -gx PATH $HOME/homebrew/bin $PATH
-end
 set -gx HOMEBREW_NO_ANALYTICS 1
 
-# Go stuff
-if test -d $HOME/homebrew/go/bin
-  set -gx PATH $HOME/homebrew/go/bin $PATH
+# Home bin
+if test -d $HOME/bin
+  set -gx PATH $HOME/bin $PATH
 end
-set -gx GOPATH $HOME/homebrew/go
+
+# Go stuff
+set -gx GOPATH $HOME/go
+if test -d $HOME/go/bin
+  set -gx PATH $HOME/go/bin $PATH
+end

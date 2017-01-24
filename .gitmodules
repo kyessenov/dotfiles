@@ -7,3 +7,10 @@
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+
+[submodule ".vim/bundle/vim-dispatch"]
+	path = .vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule ".vim/bundle/neocomplete"]
+	path = .vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim
