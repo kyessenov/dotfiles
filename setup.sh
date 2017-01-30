@@ -8,6 +8,7 @@ find $DIR -maxdepth 1 -name ".*" -not -name ".git*" |\
   done
 
 echo Linking config files
+mkdir ~/.config
 for f in $DIR/config/*; do
   ln -s $f ~/.config
 done

@@ -188,6 +188,7 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>s <Plug>(go-sameids)
 " Causes issues with showing artifacts on screen
 " let g:go_auto_type_info = 1
 " let g:go_auto_sameids = 1
