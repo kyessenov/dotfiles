@@ -10,4 +10,6 @@ bold=$(tput bold)
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1=$bold'\h:'$reset$green'`echo "${PWD%/*}" | sed -e "s;\(/.\)[^/]*;\1;g"`/${PWD##*/}'$reset'$(__git_ps1 ":%s") '$reset
 
-
+# Paths
+PATH=$HOME/bin:$HOME/go/bin:$PATH
+GOPATH=$HOME/go
