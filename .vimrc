@@ -1,7 +1,22 @@
 runtime! debian.vim
-syntax on
 
-execute pathogen#infect()
+" dein.vim
+set runtimepath+=/home/kuat/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('/home/kuat/.vim/dein')
+  call dein#begin('/home/kuat/.vim/dein')
+  call dein#add('/home/kuat/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
+  call dein#end()
+  call dein#save_state()
+endif
+if dein#check_install()
+  call dein#install()
+endif
+
+syntax on
 
 " Return to last position when opening a file
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -45,7 +60,6 @@ set ttyfast             " Fast terminal
 set lazyredraw          " Skip refreshing screen during macros
 set list                " Highlight whitespace
 set lcs=trail:•,tab:··  " Trailing space
-
 
 " Set file type by extension
 autocmd BufRead,BufNewFile *.als setfiletype alloy4
@@ -120,11 +134,8 @@ nnoremap k gk
 "inoremap <Down> <C-o>gj
 "inoremap <Up> <C-o>gk
 
-" Neocomplete (insert mode mappings)
-let g:neocomplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-g>  neocomplete#undo_completion()
-inoremap <expr><C-l>  neocomplete#complete_common_string()
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Airline plugin
 let g:airline_powerline_fonts=1
