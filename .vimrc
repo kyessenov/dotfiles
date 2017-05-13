@@ -1,10 +1,10 @@
 runtime! debian.vim
 
 " dein.vim
-set runtimepath+=/home/kuat/.vim/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('/home/kuat/.vim/dein')
-  call dein#begin('/home/kuat/.vim/dein')
-  call dein#add('/home/kuat/.vim/dein/repos/github.com/Shougo/dein.vim')
+set runtimepath+=$HOME/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state($HOME.'/.vim/dein')
+  call dein#begin($HOME.'/.vim/dein')
+  call dein#add($HOME.'/.vim/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
@@ -61,6 +61,7 @@ set ttyfast             " Fast terminal
 set lazyredraw          " Skip refreshing screen during macros
 set list                " Highlight whitespace
 set lcs=trail:•,tab:··  " Trailing space
+" set path+=$PWD/**
 
 " Set file type by extension
 autocmd BufRead,BufNewFile *.als setfiletype alloy4
@@ -77,22 +78,22 @@ autocmd BufEnter *.tex set spell
 set nobackup
 set noswapfile
 let g:netrw_dirhistmax=0
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " Don't put swap files in the same directory as "."
 set directory-=.
 
-" Gnome terminal has 256 color support; use 256-color supporting color scheme
-set t_Co=256
+" Get truecolors
+set termguicolors
 
 " Color scheme
 set background=light
+let g:lucius_use_bold=1
+let g:lucius_use_underline=1
 colorscheme lucius
 LuciusWhite
-
-" Terminal support for fonts
-set t_ZH=[3m
-set t_ZR=[23m
-hi Comment cterm=italic
+hi Comment gui=italic cterm=italic
 
 " GUI
 if has('gui_running')
@@ -202,8 +203,8 @@ autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>s <Plug>(go-sameids)
 " Causes issues with showing artifacts on screen
-" let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 let g:go_dispatch_enabled = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
