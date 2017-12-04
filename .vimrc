@@ -10,6 +10,7 @@ if dein#load_state($HOME.'/.vim/dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('fatih/vim-go')
   call dein#add('zchee/deoplete-go', {'build': 'make'})
+  call dein#add('google/vim-jsonnet')
   call dein#end()
   call dein#save_state()
 endif
