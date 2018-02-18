@@ -11,6 +11,7 @@ if dein#load_state($HOME.'/.vim/dein')
   call dein#add('fatih/vim-go')
   call dein#add('zchee/deoplete-go', {'build': 'make'})
   call dein#add('google/vim-jsonnet')
+  call dein#add('reedes/vim-pencil')
   call dein#end()
   call dein#save_state()
 endif
@@ -86,7 +87,7 @@ let g:netrw_liststyle = 3
 set directory-=.
 
 " Get truecolors
-set termguicolors
+" set termguicolors
 
 " Color scheme
 set background=light
@@ -219,3 +220,9 @@ let g:go_def_mode = 'godef'
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+
+" Markdown
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+augroup END
