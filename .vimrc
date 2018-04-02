@@ -10,6 +10,8 @@ if dein#load_state($HOME.'/.vim/dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('fatih/vim-go')
   call dein#add('zchee/deoplete-go', {'build': 'make'})
+  call dein#add('google/vim-jsonnet')
+  call dein#add('reedes/vim-pencil')
   call dein#end()
   call dein#save_state()
 endif
@@ -85,7 +87,7 @@ let g:netrw_liststyle = 3
 set directory-=.
 
 " Get truecolors
-set termguicolors
+" set termguicolors
 
 " Color scheme
 set background=light
@@ -200,6 +202,8 @@ function! s:build_go_files()
 endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>z <Plug>(go-coverage)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>s <Plug>(go-sameids)
 " Causes issues with showing artifacts on screen
@@ -216,3 +220,9 @@ let g:go_def_mode = 'godef'
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+
+" Markdown
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+augroup END

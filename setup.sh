@@ -12,3 +12,7 @@ mkdir ~/.config
 for f in $DIR/config/*; do
   ln -s $f ~/.config
 done
+
+# Need to run this script as well: sh .vim/installer.sh ~/.vim/dein
+# pip install --user neovim
+# pip3 install --user neovim3
