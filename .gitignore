@@ -1,3 +1,4 @@
 config/fish/fishd.*
 config/fish/fish_history
 .vim/dein
+.vim/init.vim
