@@ -46,7 +46,7 @@ set mouse=a             " Enable mouse usage (all modes) in terminals
 set visualbell t_vb=    " Disable visual bell
 set wildmenu            " Show auto completion proposals in command line
 set backspace=2         " Fix delete button on Mac
-set clipboard=unnamed   " X clipboard
+" set clipboard=unnamed   " X clipboard
 set modeline            " Executable mode lines
 set noshowmode
 set laststatus=2
@@ -192,15 +192,7 @@ let pyindent_open_paren="&sw*2"
 
 " Golang
 autocmd BufRead,BufNewFile *.go setlocal noexpandtab
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>b <Plug>(go-build)
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>z <Plug>(go-coverage)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
