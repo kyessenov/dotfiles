@@ -207,14 +207,14 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 let g:go_def_mode = 'godef'
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
 " Markdown
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
 augroup END
