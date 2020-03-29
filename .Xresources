@@ -10,17 +10,37 @@ xterm*utf8:               1
 xterm*eightBitInput:      true
 xterm*saveLines:          2048
 
-! gnome-settings-daemon additions
+!Xft.dpi:	192
+Xft.antialias:  true
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
+Xft.hinting:    false
+Xft.rgba:       rgb
+Xft.hintstyle:  hintfull
 
-Xft.dpi:	96
-Xft.antialias:	true
-Xft.autohint: true
-Xft.hinting:	true
-Xft.rgba:	rgb
-Xft.hintstyle:	hintslight
+! LuciusWhite color scheme
+*background:  #ffffff
+*foreground:  #444444
+*cursorColor: #5f87af
+*color0:      #444444
+*color8:      #444444
+*color1:      #af0000
+*color9:      #af0000
+*color2:      #008700
+*color10:     #008700
+*color3:      #af5f00
+*color11:     #af5f00
+*color4:      #005faf
+*color12:     #005faf
+*color5:      #870087
+*color13:     #870087
+*color6:      #008787
+*color14:     #008787
+*color7:      #ffffff
+*color15:     #ffffff
 
 ! URxvt
-
+Urxvt*depth: 32
 URxvt*foreground: Black
 !URxvt*depth: 32
 !URxvt*background: rgba:ffff/ffff/ffff/dddd
@@ -30,14 +50,14 @@ URxvt*scrollBar: false
 URxvt*loginShell: true
 URxvt*visualBell: false
 URxvt*urgentOnBell: true
-URxvt*iconFile: /usr/share/icons/Tango/scalable/apps/terminal.svg
 URxvt*externalBorder:     0
 URxvt*internalBorder:     0
-!URxvt.font:          xft:Ubuntu Mono derivative Powerline:regular:size=13:antialias=true:hinting=slight
-URxvt.font:           xft:Ubuntu Mono derivative Powerline:regular:size=13
-URxvt.boldFont:       xft:Ubuntu Mono derivative Powerline:semibold:size=13
-URxvt.italicFont:     xft:Ubuntu Mono derivative Powerline:italic:size=13
-URxvt.letterSpace: -1
+!URxvt.font:          xft:Ubuntu Mono derivative Powerline:regular:size=12:antialias=true:hinting=slight
+URxvt.font:           xft:Ubuntu Mono derivative Powerline:regular:size=12
+URxvt.boldFont:       xft:Ubuntu Mono derivative Powerline:semibold:size=12
+URxvt.italicFont:     xft:Ubuntu Mono derivative Powerline:italic:size=12
+URxvt.boldItalicFont: xft:Ubuntu Mono derivative Powerline:semibold:italic:size=12
+URxvt.letterSpace: 0
 
 ! URxvt Extensions
 
