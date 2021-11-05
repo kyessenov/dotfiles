@@ -1,4 +1,4 @@
-runtime! debian.vim
+" runtime! debian.vim
 
 " dein.vim
 set runtimepath+=$HOME/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -46,7 +46,7 @@ set mouse=a             " Enable mouse usage (all modes) in terminals
 set visualbell t_vb=    " Disable visual bell
 set wildmenu            " Show auto completion proposals in command line
 set backspace=2         " Fix delete button on Mac
-" set clipboard=unnamed   " X clipboard
+set clipboard=unnamedplus   " use system clipboard
 set modeline            " Executable mode lines
 set noshowmode
 set laststatus=2
@@ -158,46 +158,16 @@ if os == 'Darwin' || os == 'Mac'
 endif
 autocmd FileType tex execute 'setlocal complete+=k'.$HOME.'/.vim/dictionaries/latex.txt'
 
-" Indent Python in the Google way.
-setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-let s:maxoff = 50 " maximum number of lines to look backwards.
-function GetGooglePythonIndent(lnum)
-  " Indent inside parens.
-  " Align with the open paren unless it is at the end of the line.
-  " E.g.
-  "   open_paren_not_at_EOL(100,
-  "                         (200,
-  "                          300),
-  "                         400)
-  "   open_paren_at_EOL(
-  "       100, 200, 300, 400)
-  call cursor(a:lnum, 1)
-  let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-        \ . " =~ '\\(Comment\\|String\\)$'")
-  if par_line > 0
-    call cursor(par_line, 1)
-    if par_col != col("$") - 1
-      return par_col
-    endif
-  endif
-
-  " Delegate the rest to the original function.
-  return GetPythonIndent(a:lnum)
-endfunction
-
-let pyindent_nested_paren="&sw*2"
-let pyindent_open_paren="&sw*2"
-
 " Golang
 autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>B <Plug>(go-test-compile)
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>z <Plug>(go-coverage)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>s <Plug>(go-sameids)
+autocmd BufRead,BufNewFile *.tmpl set filetype=gotexttmpl
 " Causes issues with showing artifacts on screen
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
@@ -207,14 +177,14 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 let g:go_def_mode = 'godef'
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
 " Markdown
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
 augroup END
