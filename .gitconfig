@@ -1,0 +1,17 @@
+[user]
+  name = Kuat Yessenov
+  email = kuat@google.com
+[http]
+  followRedirects = 1
+  cookiefile = /home/kuat/.git-credential-cache/cookie
+[push]
+  default = matching
+[color]
+  ui = true
+[status]
+  showUntrackedFiles = all
+[alias]
+  st = status -sb
+  prune = fetch --prune
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  recent-branches = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
