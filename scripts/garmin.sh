@@ -1,7 +1,2 @@
 #!/bin/bash
-GARMIN="/Volumes/GARMIN"
-
-SOURCE=$GARMIN"/Garmin/ACTIVITY/"
-DEST=$HOME"/Drive/Training/Garmin/"
-
-rsync -t -r -v ${SOURCE} ${DEST} 
+rsync -av -i --stats /mnt/chromeos/removable/GARMIN/GARMIN/ACTIVITY/ /mnt/chromeos/GoogleDrive/MyDrive/Training/Garmin/
