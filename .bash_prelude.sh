@@ -1,6 +1,6 @@
 # Git prompt
-. ~/Documents/dotfiles/scripts/git-completion.bash
-. ~/Documents/dotfiles/scripts/git-prompt.sh
+. ~/dotfiles/scripts/git-completion.bash
+. ~/dotfiles/scripts/git-prompt.sh
 
 # Prompt
 red=$(tput setaf 1)
