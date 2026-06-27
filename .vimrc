@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
+Plug 'vimpostor/vim-lumen'
 call plug#end()
 
 syntax on
@@ -74,13 +75,15 @@ set directory-=.
 " Get truecolors
 set termguicolors
 
-" Color scheme
-set background=light
+" Terminal support
+hi Comment gui=italic cterm=italic
+
+" Color scheme: auto-detected with vim-lumen
+colorscheme lucius
+au User LumenLight LuciusWhite
+au User LumenDark LuciusDark
 let g:lucius_use_bold=1
 let g:lucius_use_underline=1
-colorscheme lucius
-LuciusWhite
-hi Comment gui=italic cterm=italic
 
 " Macros
 let mapleader = ","
@@ -140,5 +143,3 @@ let g:go_def_mode = 'godef'
 let g:go_metalinter_autosave = 0
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-
-
